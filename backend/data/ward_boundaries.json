@@ -1,0 +1,84 @@
+{
+  "educational_zones": {
+    "LPU_Main": {
+      "name": "Lovely Professional University - Main Campus",
+      "department": "University Administration",
+      "contact": "+91-1824-517000",
+      "email": "info@lpu.co.in",
+      "type": "educational_institution",
+      "services": ["Student Services", "Academic Support", "Campus Security"],
+      "boundary": [
+        [31.26247867646305, 75.70427192645857],
+        [31.2545439713566, 75.70000209962465],
+        [31.25102539216585, 75.69766868627298],
+        [31.2477639758642, 75.6947572478896],
+        [31.24441472404973, 75.68989822972641],
+        [31.23862365643148, 75.69855573825951],
+        [31.24653335106822, 75.70635661847446],
+        [31.25265262176708, 75.71138356619672],
+        [31.25585533725186, 75.71338489406992],
+        [31.25738397066991, 75.71427909029491],
+        [31.25815134363462, 75.7151326803115],
+        [31.26247867646305, 75.70427192645857]
+      ]
+    }
+  },
+  "municipal_wards": {
+    "Jalandhar_Central": {
+      "name": "Jalandhar Central Ward",
+      "department": "Municipal Corporation Central Office",
+      "contact": "+91-181-2222001",
+      "email": "central@jalandhar.gov.in",
+      "type": "municipal_ward",
+      "services": ["Water Supply", "Sanitation", "Property Tax", "Building Permits"],
+      "boundary": [
+        [31.2400, 75.6800], [31.2600, 75.6800], 
+        [31.2600, 75.7000], [31.2400, 75.7000],
+        [31.2400, 75.6800]
+      ]
+    },
+    "Jalandhar_North": {
+      "name": "Jalandhar North Ward", 
+      "department": "Municipal Corporation North Office",
+      "contact": "+91-181-2222002",
+      "email": "north@jalandhar.gov.in",
+      "type": "municipal_ward",
+      "services": ["Roads", "Street Lights", "Waste Management", "Parks"],
+      "boundary": [
+        [31.2600, 75.6800], [31.2800, 75.6800],
+        [31.2800, 75.7000], [31.2600, 75.7000],
+        [31.2600, 75.6800]
+      ]
+    }
+  },
+  "government_zones": {
+    "District_Collectorate": {
+      "name": "District Collectorate Jalandhar",
+      "department": "District Administration Office",
+      "contact": "+91-181-2444001",
+      "email": "collector@jalandhar.gov.in",
+      "type": "government_office",
+      "services": ["Revenue Services", "Land Records", "Certificates", "Licenses"],
+      "boundary": [
+        [31.3200, 75.5800], [31.3400, 75.5800],
+        [31.3400, 75.6000], [31.3200, 75.6000],
+        [31.3200, 75.5800]
+      ]
+    }
+  },
+  "health_zones": {
+    "Civil_Hospital": {
+      "name": "Civil Hospital Jalandhar District",
+      "department": "District Health Services",
+      "contact": "+91-181-2444200", 
+      "email": "cmo@jalandhar.gov.in",
+      "type": "healthcare_facility",
+      "services": ["Emergency Care", "OPD Services", "Vaccination", "Health Certificates"],
+      "boundary": [
+        [31.3000, 75.5400], [31.3200, 75.5400],
+        [31.3200, 75.5600], [31.3000, 75.5600],
+        [31.3000, 75.5400]
+      ]
+    }
+  }
+}
