@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPS Verifier - Location Validation System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+                </svg>
+                <h1>GPS Verifier</h1>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#api" class="nav-link">API Docs</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="hero-title">Validate GPS Locations Instantly</h2>
+                <p class="hero-subtitle">Upload an image with GPS data and verify if it falls within authorized zones</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Upload Section -->
+            <div class="upload-section">
+                <div class="upload-card">
+                    <div id="dropZone" class="drop-zone">
+                        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 10L12 15L17 10M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M20 15V19C20 19.5304 19.7893 20.0391 19.4142 20.4142C19.0391 20.7893 18.5304 21 18 21H6C5.46957 21 4.96086 20.7893 4.58579 20.4142C4.21071 20.0391 4 19.5304 4 19V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <h3>Drop your image here</h3>
+                        <p>or click to browse</p>
+                        <p class="supported-formats">Supports: JPG, PNG, WEBP (Max 10MB)</p>
+                        <input type="file" id="fileInput" accept="image/*" hidden>
+                    </div>
+
+                    <!-- Preview Section -->
+                    <div id="previewSection" class="preview-section" style="display: none;">
+                        <div class="preview-header">
+                            <h3>Selected Image</h3>
+                            <button id="clearBtn" class="btn-clear">Clear</button>
+                        </div>
+                        <img id="imagePreview" class="image-preview" alt="Preview">
+                        <div class="image-info">
+                            <span id="fileName"></span>
+                            <span id="fileSize"></span>
+                        </div>
+                        <button id="validateBtn" class="btn-primary">
+                            <span class="btn-text">Validate Location</span>
+                            <span class="btn-loader" style="display: none;"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div id="resultsSection" class="results-section" style="display: none;">
+                <div class="results-card">
+                    <div class="result-header">
+                        <h3>Validation Results</h3>
+                        <div id="statusBadge" class="status-badge"></div>
+                    </div>
+
+                    <!-- GPS Coordinates -->
+                    <div class="result-block">
+                        <h4>
+                            <svg class="icon" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="currentColor"/>
+                            </svg>
+                            Extracted GPS Coordinates
+                        </h4>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="label">Latitude:</span>
+                                <span id="latitude" class="value"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Longitude:</span>
+                                <span id="longitude" class="value"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Source:</span>
+                                <span id="source" class="value"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Confidence:</span>
+                                <span id="confidence" class="value"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Zone Information -->
+                    <div id="zoneInfo" class="result-block">
+                        <h4>
+                            <svg class="icon" viewBox="0 0 24 24" fill="none">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Zone Information
+                        </h4>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="label">Zone Name:</span>
+                                <span id="zoneName" class="value"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Zone Type:</span>
+                                <span id="zoneType" class="value"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Department:</span>
+                                <span id="department" class="value"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Contact:</span>
+                                <span id="contact" class="value"></span>
+                            </div>
+                            <div class="info-item full-width">
+                                <span class="label">Email:</span>
+                                <span id="email" class="value"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map Preview -->
+                    <div class="result-block">
+                        <h4>
+                            <svg class="icon" viewBox="0 0 24 24" fill="none">
+                                <path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Location Map
+                        </h4>
+                        <div id="mapContainer" class="map-container">
+                            <a id="mapLink" target="_blank" class="map-link">
+                                <span>Open in Google Maps</span>
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="result-actions">
+                        <button id="downloadBtn" class="btn-secondary">Download Report</button>
+                        <button id="newValidationBtn" class="btn-primary">New Validation</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Section -->
+            <div id="errorSection" class="error-section" style="display: none;">
+                <div class="error-card">
+                    <svg class="error-icon" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <h3>Validation Failed</h3>
+                    <p id="errorMessage"></p>
+                    <ul id="errorSuggestions" class="error-suggestions"></ul>
+                    <button id="retryBtn" class="btn-primary">Try Another Image</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Upload Image</h3>
+                    <p>Upload an image containing GPS data from your device or WhatsApp location sharing</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>GPS Extraction</h3>
+                    <p>Our system extracts GPS coordinates using EXIF data, OCR, or pattern recognition</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Zone Validation</h3>
+                    <p>Coordinates are validated against predefined administrative zones and boundaries</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Get Results</h3>
+                    <p>Receive instant validation results with zone information and confidence scores</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>GPS Verifier</h3>
+                    <p>Reliable location validation system</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="#features">Features</a>
+                        <a href="#how-it-works">How It Works</a>
+                        <a href="#api">API Documentation</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <a href="#help">Help Center</a>
+                        <a href="#contact">Contact Us</a>
+                        <a href="https://github.com/nitish-niraj/GPS-verification" target="_blank">GitHub</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GPS Verifier. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

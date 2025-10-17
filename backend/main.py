@@ -6,8 +6,11 @@ Clean and simple FastAPI application for GPS coordinate extraction and validatio
 
 import logging
 import uvicorn
+from pathlib import Path
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from contextlib import asynccontextmanager
 
 # Import our simplified API routes
@@ -52,6 +55,16 @@ app.add_middleware(
 # Include our GPS validation routes
 app.include_router(gps_router)
 
+# Serve frontend static files
+frontend_path = Path(__file__).parent.parent / "frontend"
+if frontend_path.exists():
+    app.mount("/static", StaticFiles(directory=str(frontend_path)), name="static")
+    
+    @app.get("/ui")
+    async def serve_ui():
+        """Serve the frontend UI"""
+        return FileResponse(str(frontend_path / "index.html"))
+
 @app.get("/")
 async def root():
     """Root endpoint with API information"""
@@ -59,6 +72,7 @@ async def root():
         "name": "GPS Verifier API",
         "version": "2.0.0",
         "description": "Extract GPS coordinates from images and validate locations",
+        "ui": "http://localhost:8000/ui",
         "features": [
             "GPS extraction from image EXIF data",
             "OCR text extraction using Tesseract",
@@ -66,6 +80,7 @@ async def root():
             "Location validation against administrative zones"
         ],
         "endpoints": {
+            "web_ui": "GET /ui",
             "validate_image": "POST /api/v1/validate-image-location",
             "validate_coords": "POST /api/v1/validate-coordinates", 
             "list_zones": "GET /api/v1/zones",
