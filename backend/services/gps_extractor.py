@@ -189,30 +189,28 @@ class GPSExtractor:
             return None
     
     def _extract_from_patterns(self, image_data: bytes) -> Optional[Dict]:
-        """Extract GPS coordinates using pattern recognition"""
+        """
+        Extract GPS coordinates using pattern recognition
+        
+        CRITICAL: This method should ONLY return coordinates if they are actually
+        detected in the image. Do NOT return hardcoded fallback coordinates.
+        """
         try:
-            image = Image.open(io.BytesIO(image_data))
+            # ❌ REMOVED: Fake fallback logic
+            # Previously this method had two problematic fallbacks:
+            # 1. _is_whatsapp_gps_image() returned hardcoded coords (31.2509, 75.7054)
+            # 2. _is_lpu_campus_image() returned hardcoded coords (31.256577, 75.704117)
+            #
+            # These fallbacks were WRONG because:
+            # - They returned fake GPS data for images without any actual GPS information
+            # - _is_lpu_campus_image() just checked for dark pixels (>10%) - completely meaningless
+            # - This caused the system to accept ANY image and return fake coordinates
+            #
+            # FIX: Now we return None if no actual GPS data is found
+            # The system should reject images without GPS data, not invent fake coordinates!
             
-            # Check for WhatsApp GPS overlay format
-            if self._is_whatsapp_gps_image(image):
-                return {
-                    "latitude": 31.2509,  # Your WhatsApp image coordinates
-                    "longitude": 75.7054,
-                    "source": "whatsapp_pattern",
-                    "confidence": 0.85,
-                    "note": "Detected WhatsApp GPS overlay"
-                }
-            
-            # Check for general LPU campus image
-            if self._is_lpu_campus_image(image):
-                return {
-                    "latitude": 31.256577,  # General LPU coordinates
-                    "longitude": 75.704117,
-                    "source": "pattern_recognition",
-                    "confidence": 0.6,
-                    "note": "Pattern recognition fallback"
-                }
-            
+            logger.debug("Pattern recognition: No reliable pattern-based GPS detection implemented")
+            logger.warning("❌ No GPS coordinates found using pattern recognition")
             return None
             
         except Exception as e:
@@ -284,7 +282,13 @@ class GPSExtractor:
         return None
     
     def _is_whatsapp_gps_image(self, image: Image) -> bool:
-        """Detect WhatsApp GPS overlay images"""
+        """
+        Detect WhatsApp GPS overlay images
+        
+        ❌ DEPRECATED: This function is no longer used for GPS extraction.
+        It was previously used to return hardcoded coordinates, which was wrong.
+        Keeping it here for reference but it should not be called.
+        """
         try:
             width, height = image.size
             
@@ -321,7 +325,14 @@ class GPSExtractor:
             return False
     
     def _is_lpu_campus_image(self, image: Image) -> bool:
-        """Detect general LPU campus images"""
+        """
+        Detect general LPU campus images
+        
+        ❌ DEPRECATED: This function is no longer used for GPS extraction.
+        The logic (checking if >10% pixels are dark) is meaningless and was causing the system
+        to accept ANY image with some dark areas and return fake GPS coordinates.
+        Keeping it here for reference but it should not be called.
+        """
         try:
             width, height = image.size
             
