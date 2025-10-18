@@ -210,13 +210,106 @@
         </div>
     </section>
 
+    <!-- API Documentation Section -->
+    <section id="api" class="api-docs">
+        <div class="container">
+            <h2 class="section-title">API Documentation</h2>
+            <p class="section-subtitle">Complete REST API for GPS validation and location verification</p>
+            
+            <div class="api-links">
+                <a href="/docs" target="_blank" class="api-link-card interactive-docs">
+                    <svg class="api-icon" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <div>
+                        <h3>Interactive API Docs</h3>
+                        <p>Test API endpoints directly in your browser with Swagger UI</p>
+                    </div>
+                </a>
+                
+                <a href="/redoc" target="_blank" class="api-link-card redoc-docs">
+                    <svg class="api-icon" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <div>
+                        <h3>API Reference</h3>
+                        <p>Detailed documentation with ReDoc interface</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="api-endpoints">
+                <h3>Available Endpoints</h3>
+                
+                <div class="endpoint-card">
+                    <div class="endpoint-header">
+                        <span class="http-method post">POST</span>
+                        <code class="endpoint-path">/api/v1/validate-image-location</code>
+                    </div>
+                    <p class="endpoint-description">Upload an image to extract GPS coordinates and validate location against LPU campus boundaries</p>
+                    <div class="endpoint-details">
+                        <strong>Request:</strong> multipart/form-data with image file
+                        <br>
+                        <strong>Response:</strong> GPS coordinates, validation status, zone information
+                    </div>
+                </div>
+
+                <div class="endpoint-card">
+                    <div class="endpoint-header">
+                        <span class="http-method post">POST</span>
+                        <code class="endpoint-path">/api/v1/validate-coordinates</code>
+                    </div>
+                    <p class="endpoint-description">Validate latitude/longitude coordinates directly without an image</p>
+                    <div class="endpoint-details">
+                        <strong>Request:</strong> JSON with latitude and longitude
+                        <br>
+                        <strong>Response:</strong> Validation status and zone information
+                    </div>
+                </div>
+
+                <div class="endpoint-card">
+                    <div class="endpoint-header">
+                        <span class="http-method get">GET</span>
+                        <code class="endpoint-path">/api/v1/zones</code>
+                    </div>
+                    <p class="endpoint-description">List all configured validation zones (LPU campus areas)</p>
+                    <div class="endpoint-details">
+                        <strong>Response:</strong> List of zones with boundaries and metadata
+                    </div>
+                </div>
+
+                <div class="endpoint-card">
+                    <div class="endpoint-header">
+                        <span class="http-method get">GET</span>
+                        <code class="endpoint-path">/api/v1/health</code>
+                    </div>
+                    <p class="endpoint-description">Check API health status and service availability</p>
+                    <div class="endpoint-details">
+                        <strong>Response:</strong> Health status, OCR availability, zones loaded
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-features">
+                <h3>Key Features</h3>
+                <ul>
+                    <li>✅ <strong>EXIF GPS Extraction:</strong> Extract coordinates from camera metadata</li>
+                    <li>✅ <strong>OCR Text Recognition:</strong> Read GPS from screenshots using Tesseract</li>
+                    <li>✅ <strong>LPU Campus Validation:</strong> Verify locations within Lovely Professional University boundaries</li>
+                    <li>✅ <strong>Pattern Recognition:</strong> Fallback GPS detection methods</li>
+                    <li>✅ <strong>No Training Required:</strong> Works out-of-the-box with any GPS image</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
                     <h3>GPS Verifier</h3>
-                    <p>Reliable location validation system</p>
+                    <p>Reliable location validation for Lovely Professional University</p>
                 </div>
                 <div class="footer-links">
                     <div class="footer-column">
@@ -226,9 +319,9 @@
                         <a href="#api">API Documentation</a>
                     </div>
                     <div class="footer-column">
-                        <h4>Support</h4>
-                        <a href="#help">Help Center</a>
-                        <a href="#contact">Contact Us</a>
+                        <h4>API Resources</h4>
+                        <a href="/docs" target="_blank">Interactive Docs</a>
+                        <a href="/redoc" target="_blank">API Reference</a>
                         <a href="https://github.com/nitish-niraj/GPS-verification" target="_blank">GitHub</a>
                     </div>
                 </div>

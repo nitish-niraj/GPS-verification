@@ -13,15 +13,15 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from contextlib import asynccontextmanager
 
-# Import our simplified API routes
-from routes.gps_api import router as gps_router
-
-# Configure logging with clear, readable format
+# Configure logging FIRST before importing routes
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.DEBUG,  # Changed to DEBUG to see OCR extracted text
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
+
+# Import our simplified API routes (after logging is configured)
+from routes.gps_api import router as gps_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -38,8 +38,8 @@ async def lifespan(app: FastAPI):
 # Create FastAPI application with clean configuration
 app = FastAPI(
     title="GPS Verifier API",
-    description="Simple API for extracting GPS coordinates from images and validating locations",
-    version="2.0.0",
+    description="GPS validation system for Lovely Professional University - Extract coordinates from images and validate against campus boundaries",
+    version="3.0.0",
     lifespan=lifespan
 )
 
@@ -70,8 +70,8 @@ async def root():
     """Root endpoint with API information"""
     return {
         "name": "GPS Verifier API",
-        "version": "2.0.0",
-        "description": "Extract GPS coordinates from images and validate locations",
+        "version": "3.0.0",
+        "description": "GPS validation system for Lovely Professional University",
         "ui": "http://localhost:8000/ui",
         "features": [
             "GPS extraction from image EXIF data",
