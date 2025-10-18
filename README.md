@@ -1,534 +1,1007 @@
-# GPS Verifier - LPU Campus Location Validation System# GPS Verifier - Location Validation System# GPS Verifier API
+# GPS Verifier - LPU Campus Location Validation System# GPS Verifier - LPU Campus Location Validation System
 
 
 
-[![Version](https://img.shields.io/badge/version-3.0.0-blue.svg)](https://github.com/nitish-niraj/GPS-verification)
-
-[![Python](https://img.shields.io/badge/python-3.8+-green.svg)](https://www.python.org/)
-
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-teal.svg)](https://fastapi.tiangolo.com/)<div align="center">A simple and clean API for extracting GPS coordinates from images and validating locations against administrative zones.
-
-[![License](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE)
+<div align="center"><div align="center">
 
 
 
-A modern, intelligent GPS validation system designed for **Lovely Professional University (LPU)** campus. This system extracts GPS coordinates from images using multiple methods and validates locations against predefined campus boundaries.
+[![Version](https://img.shields.io/badge/version-3.0.0-blue.svg)](https://github.com/nitish-niraj/GPS-verification)[![Version](https://img.shields.io/badge/version-3.0.0-blue.svg)](https://github.com/nitish-niraj/GPS-verification)
 
-![GPS Verifier](https://img.shields.io/badge/GPS-Verifier-blue)## 🚀 Features
+[![Python](https://img.shields.io/badge/python-3.8+-green.svg)](https://www.python.org/)[![Python](https://img.shields.io/badge/python-3.8+-green.svg)](https://www.python.org/)
 
-## 🌟 Key Features
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-teal.svg)](https://fastapi.tiangolo.com/)[![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-teal.svg)](https://fastapi.tiangolo.com/)
 
-![Python](https://img.shields.io/badge/Python-3.8%2B-brightgreen)
-
-- **📸 Multi-Method GPS Extraction**
-
-  - EXIF metadata reading from camera photos![FastAPI](https://img.shields.io/badge/FastAPI-Latest-teal)- **GPS Extraction**: Extract coordinates from image EXIF data, OCR text, or pattern recognition
-
-  - OCR text extraction using Tesseract (for screenshots)
-
-  - Pattern recognition as fallback method- **OCR Support**: Uses Tesseract OCR for reading GPS coordinates from image text overlays
+[![License](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE)[![License](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE)
 
 
 
-- **🎯 LPU Campus Validation****A modern web application for extracting GPS coordinates from images and validating locations against administrative zones**- **WhatsApp Detection**: Specifically detects and extracts coordinates from WhatsApp GPS overlays
-
-  - Precise boundary validation for LPU Main Campus
-
-  - Polygon-based geofencing- **Location Validation**: Validates coordinates against predefined administrative zones
-
-  - Detailed zone information
-
-</div>- **Simple API**: Clean REST endpoints for easy integration
-
-- **🚀 Modern Tech Stack**
-
-  - FastAPI for high-performance REST API
-
-  - Tesseract OCR for text extraction
-
-  - Apple-inspired glassmorphism UI---## 📁 Project Structure
-
-  - Real-time validation
+**A modern, intelligent GPS validation system designed for Lovely Professional University (LPU) campus****A modern, intelligent GPS validation system designed for Lovely Professional University (LPU) campus**
 
 
 
-- **📱 Filename-Independent**
-
-  - Content-based extraction only## ✨ Features```
-
-  - Works with images from any source
-
-  - No naming conventions requiredgps-verifier/
+Extract GPS coordinates from images using multiple methods and validate locations against predefined campus boundaries.Extract GPS coordinates from images using multiple methods and validate locations against predefined campus boundaries.
 
 
 
-## 📋 Table of Contents### GPS Extraction Methods├── backend/
+</div></div>
 
 
 
-- [Quick Start](#-quick-start)- **EXIF Metadata**: Extracts GPS coordinates from image EXIF data│   ├── main.py                 # FastAPI application entry point
+------
 
-- [Installation](#-installation)
 
-- [Usage](#-usage)- **OCR Text Recognition**: Uses Tesseract OCR to extract visible GPS text│   ├── requirements.txt        # Python dependencies
 
-- [API Documentation](#-api-documentation)
+## 🌟 Key Features## 🌟 Key Features
 
-- [Architecture](#-architecture)- **Pattern Recognition**: Detects GPS coordinates using regex patterns│   ├── services/
 
-- [Configuration](#-configuration)
 
-- [Version History](#-version-history)- **WhatsApp GPS Overlay**: Specialized detection for WhatsApp location sharing images│   │   ├── gps_extractor.py   # GPS coordinate extraction (EXIF, OCR, patterns)
+- **📸 Multi-Method GPS Extraction**- **📸 Multi-Method GPS Extraction**
 
-- [Contributing](#-contributing)
+  - EXIF metadata reading from camera photos  - EXIF metadata reading from camera photos
 
-│   │   └── location_validator.py # Location validation against zones
+  - OCR text extraction using Tesseract (for screenshots)  - OCR text extraction using Tesseract (for screenshots)
 
-## 🚀 Quick Start
+  - Pattern recognition as fallback method  - Pattern recognition as fallback method
 
-### Location Validation│   ├── routes/
+  - WhatsApp GPS overlay detection  - WhatsApp GPS overlay detection
 
-### Prerequisites
 
-- **Zone Boundary Validation**: Validates coordinates against predefined administrative zones│   │   └── gps_api.py         # API endpoints
 
-- Python 3.8 or higher
+- **🎯 LPU Campus Validation**- **🎯 LPU Campus Validation**
 
-- Tesseract OCR installed on your system- **Multi-Zone Support**: Handles educational institutions, government zones, etc.│   └── data/
+  - Precise boundary validation for LPU Main Campus  - Precise boundary validation for LPU Main Campus
 
-- Basic knowledge of REST APIs (optional)
+  - Polygon-based geofencing  - Polygon-based geofencing
 
-- **Confidence Scoring**: Provides validation confidence based on distance from boundaries│       └── ward_boundaries.json # Administrative zone definitions
+  - Detailed zone information  - Detailed zone information
+
+
+
+- **🚀 Modern Tech Stack**- **🚀 Modern Tech Stack**
+
+  - FastAPI for high-performance REST API  - FastAPI for high-performance REST API
+
+  - Tesseract OCR for text extraction  - Tesseract OCR for text extraction
+
+  - Apple-inspired glassmorphism UI  - Apple-inspired glassmorphism UI
+
+  - Real-time validation  - Real-time validation
+
+
+
+- **📱 Filename-Independent**- **� Filename-Independent**
+
+  - Content-based extraction only  - Content-based extraction only
+
+  - Works with images from any source  - Works with images from any source
+
+  - No naming conventions required  - No naming conventions required
+
+
+
+------
+
+
+
+## 📋 Table of Contents  - Real-time validation
+
+
+
+- [Quick Start](#quick-start)
+
+- [Installation](#installation)
+
+- [Usage](#usage)- **📱 Filename-Independent**
+
+- [API Documentation](#api-documentation)
+
+- [Architecture](#architecture)  - Content-based extraction only## ✨ Features```
+
+- [Configuration](#configuration)
+
+- [Version History](#version-history)## 📋 Table of Contents
+
+- [Contributing](#contributing)
+
+- [Quick Start](#-quick-start)
+
+---- [Installation](#-installation)
+
+- [Usage](#-usage)
+
+## 🚀 Quick Start- [API Documentation](#-api-documentation)
+
+- [Architecture](#-architecture)
+
+### Prerequisites- [Configuration](#-configuration)
+
+- [Version History](#-version-history)
+
+- Python 3.8 or higher- [Contributing](#-contributing)
+
+- Tesseract OCR installed on your system
+
+- Basic knowledge of REST APIs (optional)---
+
+
+
+### Installation## 🚀 Quick Start
+
+
+
+1. **Clone the repository**### Prerequisites
+
+
+
+   ```bash- Python 3.8 or higher
+
+   git clone https://github.com/nitish-niraj/GPS-verification.git- Tesseract OCR installed on your system
+
+   cd GPS-verification- Basic knowledge of REST APIs (optional)
+
+   ```
 
 ### Installation
 
-- **Detailed Zone Information**: Returns contact details, departments, and addresses├── README.md                   # This file
+2. **Install Tesseract OCR**
 
 1. **Clone the repository**
 
-   ```bash└── requirements.txt           # Root dependencies
+   **Windows:**
 
-   git clone https://github.com/nitish-niraj/GPS-verification.git
+      ```bash
 
-   cd GPS-verification### Modern Web Interface```
+   ```bash   git clone https://github.com/nitish-niraj/GPS-verification.git
+
+   # Download from: https://github.com/UB-Mannheim/tesseract/wiki   cd GPS-verification
+
+   # Install and note the installation path   ```
 
    ```
-
-- **Drag & Drop Upload**: Intuitive image upload with preview
 
 2. **Install Tesseract OCR**
 
-   - **Real-time Validation**: Instant GPS extraction and zone validation## 🛠️ Installation
-
-   **Windows:**
-
-   ```bash- **Responsive Design**: Works on desktop, tablet, and mobile devices
-
-   # Download from: https://github.com/UB-Mannheim/tesseract/wiki
-
-   # Install and note the installation path- **Interactive Results**: Visual display of GPS coordinates and zone information### 1. Install Python Dependencies
-
-   ```
-
-   - **Export Reports**: Download validation results as JSON```bash
-
    **Linux:**
 
-   ```bashcd backend
+      **Windows:**
 
-   sudo apt-get install tesseract-ocr
+   ```bash   ```bash
 
-   ```---pip install -r requirements.txt
+   sudo apt-get install tesseract-ocr   # Download from: https://github.com/UB-Mannheim/tesseract/wiki
+
+   ```   # Install and note the installation path
+
+      ```
+
+   **macOS:**
+
+      **Linux:**
+
+   ```bash   ```bash
+
+   brew install tesseract   sudo apt-get install tesseract-ocr
+
+   ```   ```
 
    
 
-   **macOS:**```
+3. **Install Python dependencies**   **macOS:**
 
    ```bash
 
-   brew install tesseract## 🚀 Quick Start
+   ```bash   brew install tesseract
+
+   pip install -r backend/requirements.txt   ```
 
    ```
-
-### 2. Install Tesseract OCR (Windows)
 
 3. **Install Python dependencies**
 
-   ```bash### Installation```bash
+4. **Configure Tesseract path (Windows only)**
 
-   pip install -r backend/requirements.txt
+      ```bash
 
-   ```winget install --id UB-Mannheim.TesseractOCR
+   Edit `backend/services/gps_extractor.py` if needed:   pip install -r backend/requirements.txt
 
-
-
-4. **Configure Tesseract path (Windows only)**1. **Clone the repository**```
-
-   
-
-   Edit `backend/services/gps_extractor.py` if needed:```bash
+      ```
 
    ```python
 
-   tesseract_paths = [git clone https://github.com/nitish-niraj/GPS-verification.git### 3. Run the API
+   tesseract_paths = [4. **Configure Tesseract path (Windows only)**
+
+       r"D:\OCR-System\tesseract.exe",  # Your installation path   
+
+       r"C:\Program Files\Tesseract-OCR\tesseract.exe",   Edit `backend/services/gps_extractor.py` if needed:
+
+   ]   ```python
+
+   ```   tesseract_paths = [
 
        r"D:\OCR-System\tesseract.exe",  # Your installation path
 
-       r"C:\Program Files\Tesseract-OCR\tesseract.exe",cd GPS-verification```bash
+5. **Run the application**       r"C:\Program Files\Tesseract-OCR\tesseract.exe",
 
    ]
 
-   ``````python main.py
+   ```bash   ```
 
+   cd backend
 
+   python main.py5. **Run the application**
 
-5. **Run the application**```
+   ```
 
    ```bash
 
-   cd backend2. **Install dependencies**
+6. **Access the application**   cd backend
 
-   python main.py
+   - Web UI: <http://localhost:8000/ui>   python main.py
 
-   ``````bashThe API will be available at: `http://localhost:8000`
+   - API Docs: <http://localhost:8000/docs>   ```
 
+   - API Reference: <http://localhost:8000/redoc>
 
+6. **Access the application**
 
-6. **Access the application**cd backend
+---   - Web UI: http://localhost:8000/ui
 
-   - Web UI: http://localhost:8000/ui
+   - API Docs: http://localhost:8000/docs
 
-   - API Docs: http://localhost:8000/docspip install -r requirements.txt## 🔌 API Endpoints
-
-   - API Reference: http://localhost:8000/redoc
-
-```
-
-## 🎯 Usage
-
-### Image GPS Validation
-
-### Web Interface
-
-3. **Start the server**```bash
-
-1. Open your browser and navigate to `http://localhost:8000/ui`
-
-2. Drag and drop an image or click to browse```bashPOST /api/v1/validate-image-location
-
-3. Click "Validate Location"
-
-4. View the results with GPS coordinates and validation statuspython main.py```
+## 🎯 Usage   - API Reference: http://localhost:8000/redoc
 
 
 
-### API Usage```Upload an image to extract GPS coordinates and validate location.
+### Web Interface---
 
 
+
+1. Open your browser and navigate to `http://localhost:8000/ui`   pip install -r backend/requirements.txt
+
+2. Drag and drop an image or click to browse
+
+3. Click "Validate Location"   ```winget install --id UB-Mannheim.TesseractOCR
+
+4. View the results with GPS coordinates and validation status
+
+
+
+### API Usage
+
+4. **Configure Tesseract path (Windows only)**1. **Clone the repository**```
 
 #### Validate Image Location
 
+   
+
+```bash
+
+curl -X POST "http://localhost:8000/api/v1/validate-image-location" \   Edit `backend/services/gps_extractor.py` if needed:```bash
+
+  -F "file=@/path/to/image.jpg"
+
+```   ```python
 
 
-```bash4. **Access the application****Example:**
 
-curl -X POST "http://localhost:8000/api/v1/validate-image-location" \
+**Response:**   tesseract_paths = [git clone https://github.com/nitish-niraj/GPS-verification.git### 3. Run the API
 
-  -F "file=@/path/to/image.jpg"- **Web UI**: http://localhost:8000/ui```bash
 
-```
 
-- **API Docs**: http://localhost:8000/docscurl -X POST http://localhost:8000/api/v1/validate-image-location \
-
-**Response:**
-
-```json- **Health Check**: http://localhost:8000/api/v1/health  -H "Content-Type: multipart/form-data" \
+```json       r"D:\OCR-System\tesseract.exe",  # Your installation path
 
 {
 
-  "valid": true,  -F "file=@your-image.jpg"
+  "valid": true,       r"C:\Program Files\Tesseract-OCR\tesseract.exe",cd GPS-verification```bash
 
   "gps": {
 
-    "latitude": 31.2508,---```
+    "latitude": 31.2508,   ]
 
     "longitude": 75.7054,
 
-    "source": "ocr",
+    "source": "ocr",   ``````python main.py
 
     "confidence": 0.8
 
-  },## 📁 Project Structure### Direct Coordinate Validation
+  },
 
   "zone": {
 
-    "name": "LPU_Main",```bash
+    "name": "LPU_Main",5. **Run the application**```
 
     "full_name": "Lovely Professional University - Main Campus",
 
-    "type": "educational_institution"```POST /api/v1/validate-coordinates?latitude=31.2509&longitude=75.7054
+    "type": "educational_institution"   ```bash
 
   },
 
-  "message": "Location validated successfully"GPS-verification/```
+  "message": "Location validated successfully"   cd backend2. **Install dependencies**
 
 }
 
-```├── backend/                      # Backend API server
+```   python main.py
 
 
 
-#### Validate Coordinates Directly│   ├── main.py                  # FastAPI entry point### List Available Zones
+#### Validate Coordinates Directly   ``````bashThe API will be available at: `http://localhost:8000`
 
 
 
-```bash│   ├── requirements.txt         # Python dependencies```bash
+```bash
 
 curl -X POST "http://localhost:8000/api/v1/validate-coordinates" \
 
-  -H "Content-Type: application/json" \│   ├── routes/GET /api/v1/zones
+  -H "Content-Type: application/json" \6. **Access the application**cd backend
 
   -d '{"latitude": 31.2508, "longitude": 75.7054}'
 
-```│   │   └── gps_api.py          # API endpoints```
+```   - Web UI: http://localhost:8000/ui
 
 
 
-#### List Available Zones│   ├── services/
+#### List Available Zones   - API Docs: http://localhost:8000/docspip install -r requirements.txt## 🔌 API Endpoints
 
 
 
-```bash│   │   ├── gps_extractor.py    # GPS extraction### Health Check
+```bash   - API Reference: http://localhost:8000/redoc
 
 curl -X GET "http://localhost:8000/api/v1/zones"
 
-```│   │   └── location_validator.py # Zone validation```bash
+``````
 
 
 
-#### Health Check│   └── data/GET /api/v1/health
+#### Health Check## 🎯 Usage
 
 
 
-```bash│       └── ward_boundaries.json # Zone definitions```
+```bash### Image GPS Validation
 
 curl -X GET "http://localhost:8000/api/v1/health"
 
-```│
+```### Web Interface
 
 
 
-## 📚 API Documentation├── frontend/                     # Web UI## 📖 How It Works
+Expected response:3. **Start the server**```bash
 
 
 
-The API is fully documented with interactive Swagger UI and ReDoc interfaces:│   ├── index.html               # Main page
+```json1. Open your browser and navigate to `http://localhost:8000/ui`
+
+{
+
+  "status": "healthy",2. Drag and drop an image or click to browse```bashPOST /api/v1/validate-image-location
+
+  "ocr_available": true,
+
+  "zones_loaded": 1,3. Click "Validate Location"
+
+  "tesseract_version": "5.5.0.20241111"
+
+}4. View the results with GPS coordinates and validation statuspython main.py```
+
+```
 
 
 
-- **Interactive API Docs (Swagger):** http://localhost:8000/docs│   ├── css/style.css            # Styling### GPS Extraction Process
+---
+
+### API Usage```Upload an image to extract GPS coordinates and validate location.
+
+## 📚 API Documentation
+
+
+
+The API is fully documented with interactive Swagger UI and ReDoc interfaces:
+
+#### Validate Image Location
+
+- **Interactive API Docs (Swagger):** <http://localhost:8000/docs>
 
   - Test endpoints directly in browser
 
-  - View request/response schemas│   └── js/app.js                # Frontend logic1. **EXIF Data**: First tries to extract GPS from image metadata
+  - View request/response schemas
 
-  - Try out with real images
-
-│2. **OCR Text**: Uses Tesseract to read coordinates from text overlays
-
-- **API Reference (ReDoc):** http://localhost:8000/redoc
-
-  - Clean, detailed documentation├── docker-compose.yml           # Docker config3. **Pattern Recognition**: Falls back to image pattern analysis
-
-  - Schema definitions
-
-  - Code examples└── README.md                    # Documentation4. **WhatsApp Detection**: Specifically handles WhatsApp GPS overlay format
+  - Try out with real images```bash4. **Access the application****Example:**
 
 
 
-### Available Endpoints```
+- **API Reference (ReDoc):** <http://localhost:8000/redoc>curl -X POST "http://localhost:8000/api/v1/validate-image-location" \
 
+  - Clean, detailed documentation
 
+  - Schema definitions  -F "file=@/path/to/image.jpg"- **Web UI**: http://localhost:8000/ui```bash
 
-| Method | Endpoint | Description |### Location Validation
+  - Code examples
 
-|--------|----------|-------------|
+```
 
-| POST | `/api/v1/validate-image-location` | Upload image for GPS extraction and validation |---1. **Zone Matching**: Checks if coordinates fall within predefined zones
+### Available Endpoints
 
-| POST | `/api/v1/validate-coordinates` | Validate lat/long coordinates directly |
+- **API Docs**: http://localhost:8000/docscurl -X POST http://localhost:8000/api/v1/validate-image-location \
 
-| GET | `/api/v1/zones` | List all configured validation zones |2. **Confidence Scoring**: Calculates confidence based on distance from boundaries
+| Method | Endpoint | Description |
 
-| GET | `/api/v1/health` | Check API health and service status |
+|--------|----------|-------------|**Response:**
 
-| GET | `/docs` | Interactive API documentation (Swagger) |## 📖 Usage3. **Zone Information**: Returns detailed zone information (name, type, contact details)
+| POST | `/api/v1/validate-image-location` | Upload image for GPS extraction and validation |
 
-| GET | `/redoc` | API reference documentation |
+| POST | `/api/v1/validate-coordinates` | Validate lat/long coordinates directly |```json- **Health Check**: http://localhost:8000/api/v1/health  -H "Content-Type: multipart/form-data" \
+
+| GET | `/api/v1/zones` | List all configured validation zones |
+
+| GET | `/api/v1/health` | Check API health and service status |{
+
+| GET | `/docs` | Interactive API documentation (Swagger) |
+
+| GET | `/redoc` | API reference documentation |  "valid": true,  -F "file=@your-image.jpg"
 
 | GET | `/ui` | Web-based user interface |
 
+  "gps": {
 
+---
 
-## 🏗️ Architecture### Web Interface## 🧪 Example Response
+    "latitude": 31.2508,---```
 
+## 🏗️ Architecture
 
+    "longitude": 75.7054,
 
 ### System Overview
 
+    "source": "ocr",
 
+```
 
-```1. Open http://localhost:8000/ui in your browser```json
+┌─────────────────────────────────────────────────────┐    "confidence": 0.8
 
-┌─────────────────────────────────────────────────────┐
+│                   Frontend (UI)                      │
 
-│                   Frontend (UI)                      │2. Drag & drop an image with GPS data{
+│  - Apple Liquid Design (Glassmorphism)              │  },## 📁 Project Structure### Direct Coordinate Validation
 
-│  - Apple Liquid Design (Glassmorphism)              │
+│  - Drag & Drop Image Upload                         │
 
-│  - Drag & Drop Image Upload                         │3. Click "Validate Location"  "filename": "WhatsApp Image 2025-09-26.jpg",
+│  - Real-time Validation Display                     │  "zone": {
 
-│  - Real-time Validation Display                     │
+└────────────────────┬────────────────────────────────┘
 
-└────────────────────┬────────────────────────────────┘4. View results with GPS coordinates and zone information  "extracted_gps": {
+                     │    "name": "LPU_Main",```bash
 
-                     │
+                     │ HTTP/REST API
 
-                     │ HTTP/REST API    "latitude": 31.2509,
+                     │    "full_name": "Lovely Professional University - Main Campus",
 
-                     │
+┌────────────────────▼────────────────────────────────┐
 
-┌────────────────────▼────────────────────────────────┐### API Usage    "longitude": 75.7054,
+│              FastAPI Backend                         │    "type": "educational_institution"```POST /api/v1/validate-coordinates?latitude=31.2509&longitude=75.7054
 
-│              FastAPI Backend                         │
+│  ┌──────────────────────────────────────────────┐  │
 
-│  ┌──────────────────────────────────────────────┐  │    "source": "whatsapp_pattern",
+│  │        GPS Extraction Layer                   │  │  },
 
-│  │        GPS Extraction Layer                   │  │
+│  │  1. EXIF Reader (Camera Metadata)            │  │
 
-│  │  1. EXIF Reader (Camera Metadata)            │  │**Validate Image:**    "confidence": 0.85,
+│  │  2. OCR Engine (Tesseract - Text in Images)  │  │  "message": "Location validated successfully"GPS-verification/```
 
-│  │  2. OCR Engine (Tesseract - Text in Images)  │  │
+│  │  3. Pattern Recognition (Fallback)           │  │
 
-│  │  3. Pattern Recognition (Fallback)           │  │```bash    "note": "Detected WhatsApp GPS overlay"
+│  └──────────────────┬───────────────────────────┘  │}
 
-│  └──────────────────┬───────────────────────────┘  │
+│                     │                                │
 
-│                     │                                │curl -X POST "http://localhost:8000/api/v1/validate-image-location" \  },
+│  ┌──────────────────▼───────────────────────────┐  │```├── backend/                      # Backend API server
 
-│  ┌──────────────────▼───────────────────────────┐  │
-
-│  │      Location Validation Layer               │  │  -F "file=@your-image.jpg"  "validation": {
+│  │      Location Validation Layer               │  │
 
 │  │  - Polygon-based Geofencing                  │  │
 
-│  │  - LPU Campus Boundary Validation            │  │```    "status": "valid",
+│  │  - LPU Campus Boundary Validation            │  │
 
-│  │  - Zone Identification                       │  │
+│  │  - Zone Identification                       │  │#### Validate Coordinates Directly│   ├── main.py                  # FastAPI entry point### List Available Zones
 
-│  └──────────────────────────────────────────────┘  │    "zone_name": "Lovely Professional University - Main Campus",
+│  └──────────────────────────────────────────────┘  │
 
 └─────────────────────────────────────────────────────┘
 
-```**Response:**    "zone_type": "educational_institution",
+```
 
+```bash│   ├── requirements.txt         # Python dependencies```bash
 
+### Directory Structure
 
-### Directory Structure```json    "department": "University Administration",
+curl -X POST "http://localhost:8000/api/v1/validate-coordinates" \
 
+```
 
+GPS-verification/  -H "Content-Type: application/json" \│   ├── routes/GET /api/v1/zones
 
-```{    "confidence": 0.72
+├── backend/                    # Backend application
 
-GPS-verification/
+│   ├── main.py                # FastAPI application entry point  -d '{"latitude": 31.2508, "longitude": 75.7054}'
 
-├── backend/                    # Backend application  "filename": "whatsapp_location.jpg",  }
+│   ├── requirements.txt       # Python dependencies
 
-│   ├── main.py                # FastAPI application entry point
+│   ├── data/                  # Configuration data```│   │   └── gps_api.py          # API endpoints```
 
-│   ├── requirements.txt       # Python dependencies  "extracted_gps": {}
-
-│   ├── data/                  # Configuration data
-
-│   │   └── ward_boundaries.json  # LPU campus boundaries    "latitude": 31.256577,```
+│   │   └── ward_boundaries.json  # LPU campus boundaries
 
 │   ├── routes/                # API endpoints
 
-│   │   └── gps_api.py        # GPS validation routes    "longitude": 75.704117,
+│   │   └── gps_api.py        # GPS validation routes
 
-│   └── services/              # Business logic
+│   └── services/              # Business logic#### List Available Zones│   ├── services/
 
-│       ├── gps_extractor.py  # GPS extraction service    "source": "pattern_recognition",## 🔧 Configuration
+│       ├── gps_extractor.py  # GPS extraction service
 
 │       └── location_validator.py  # Location validation
 
-├── frontend/                   # Frontend application    "confidence": 0.6
+├── frontend/                   # Frontend application
 
-│   ├── index.html             # Main UI page
+│   ├── index.html             # Main UI page```bash│   │   ├── gps_extractor.py    # GPS extraction### Health Check
 
-│   ├── css/  },### Zone Boundaries
+│   ├── css/
 
-│   │   └── style.css          # Apple-inspired styling
+│   │   └── style.css          # Apple-inspired stylingcurl -X GET "http://localhost:8000/api/v1/zones"
 
-│   └── js/  "validation": {Edit `backend/data/ward_boundaries.json` to add or modify administrative zones:
+│   └── js/
 
-│       └── app.js             # Frontend logic
+│       └── app.js             # Frontend logic```│   │   └── location_validator.py # Zone validation```bash
 
-├── docs/                       # Documentation    "status": "valid",
+├── docs/                       # Documentation
 
 │   ├── API_DOCUMENTATION.md   # Complete API guide
 
-│   └── INSTALLATION.md        # Installation guide    "zone_name": "Lovely Professional University - Main Campus",```json
+│   └── INSTALLATION.md        # Installation guide
 
-├── requirements.txt           # Root dependencies
+├── requirements.txt           # Root dependencies#### Health Check│   └── data/GET /api/v1/health
 
-├── docker-compose.yml         # Docker configuration    "confidence": 0.73{
+├── docker-compose.yml         # Docker configuration
 
 └── README.md                  # This file
 
-```  }  "zones": [
+```
+
+```bash│       └── ward_boundaries.json # Zone definitions```
+
+---
+
+curl -X GET "http://localhost:8000/api/v1/health"
+
+## ⚙️ Configuration
+
+```│
+
+### LPU Campus Boundaries
 
 
 
-## ⚙️ Configuration}    {
+The system is pre-configured with **Lovely Professional University Main Campus** boundaries. The boundary data is stored in `backend/data/ward_boundaries.json`.
 
+## 📚 API Documentation├── frontend/                     # Web UI## 📖 How It Works
 
-
-### LPU Campus Boundaries```      "id": "zone_1",
-
-
-
-The system is pre-configured with **Lovely Professional University Main Campus** boundaries. The boundary data is stored in `backend/data/ward_boundaries.json`.      "name": "Zone Name",
-
-
-
-**Zone Configuration:**### Python Example      "type": "zone_type",
+**Zone Configuration:**
 
 - **Name:** LPU_Main
 
-- **Full Name:** Lovely Professional University - Main Campus      "boundary": [
+- **Full Name:** Lovely Professional University - Main Campus
 
-- **Location:** Jalandhar, Punjab, India
+- **Location:** Jalandhar, Punjab, IndiaThe API is fully documented with interactive Swagger UI and ReDoc interfaces:│   ├── index.html               # Main page
 
-- **Contact:** +91-1824-517000```python        [longitude, latitude],
+- **Contact:** +91-1824-517000
 
 - **Email:** info@lpu.co.in
 
-- **Type:** Educational Institutionimport requests        [longitude, latitude],
+- **Type:** Educational Institution
 
+- **Interactive API Docs (Swagger):** http://localhost:8000/docs│   ├── css/style.css            # Styling### GPS Extraction Process
 
+**To modify boundaries:**
 
-**To modify boundaries:**        ...
+  - Test endpoints directly in browser
 
+Edit `backend/data/ward_boundaries.json`:
 
-
-Edit `backend/data/ward_boundaries.json`:with open('image.jpg', 'rb') as f:      ]
+  - View request/response schemas│   └── js/app.js                # Frontend logic1. **EXIF Data**: First tries to extract GPS from image metadata
 
 ```json
 
-{    response = requests.post(    }
+{  - Try out with real images
 
   "educational_zones": {
+
+    "LPU_Main": {│2. **OCR Text**: Uses Tesseract to read coordinates from text overlays
+
+      "name": "Lovely Professional University - Main Campus",
+
+      "boundary": [- **API Reference (ReDoc):** http://localhost:8000/redoc
+
+        [31.26247867646305, 75.70427192645857],
+
+        [31.2545439713566, 75.70000209962465],  - Clean, detailed documentation├── docker-compose.yml           # Docker config3. **Pattern Recognition**: Falls back to image pattern analysis
+
+        // Add more coordinate pairs
+
+      ]  - Schema definitions
+
+    }
+
+  }  - Code examples└── README.md                    # Documentation4. **WhatsApp Detection**: Specifically handles WhatsApp GPS overlay format
+
+}
+
+```
+
+
+
+### Tesseract OCR Configuration### Available Endpoints```
+
+
+
+The system automatically searches for Tesseract in common installation paths:
+
+
+
+**Windows:**| Method | Endpoint | Description |### Location Validation
+
+- `D:\OCR-System\tesseract.exe`
+
+- `C:\Program Files\Tesseract-OCR\tesseract.exe`|--------|----------|-------------|
+
+- `C:\Program Files (x86)\Tesseract-OCR\tesseract.exe`
+
+| POST | `/api/v1/validate-image-location` | Upload image for GPS extraction and validation |---1. **Zone Matching**: Checks if coordinates fall within predefined zones
+
+**Linux/macOS:**
+
+- `/usr/bin/tesseract`| POST | `/api/v1/validate-coordinates` | Validate lat/long coordinates directly |
+
+- `/usr/local/bin/tesseract`
+
+| GET | `/api/v1/zones` | List all configured validation zones |2. **Confidence Scoring**: Calculates confidence based on distance from boundaries
+
+---
+
+| GET | `/api/v1/health` | Check API health and service status |
+
+## 📊 Version History
+
+| GET | `/docs` | Interactive API documentation (Swagger) |## 📖 Usage3. **Zone Information**: Returns detailed zone information (name, type, contact details)
+
+| Version | Release Date | Key Changes | Status |
+
+|---------|-------------|-------------|--------|| GET | `/redoc` | API reference documentation |
+
+| **3.0.0** | Oct 18, 2025 | 🎉 **Major Release**<br/>✅ Added Tesseract OCR integration<br/>✅ Implemented multi-method GPS extraction<br/>✅ Fixed fake GPS coordinate bug<br/>✅ Added comprehensive API documentation<br/>✅ Redesigned UI with glassmorphism<br/>✅ LPU campus boundary validation<br/>✅ Filename-independent extraction<br/>✅ Enhanced error handling | 🟢 Current |
+
+| **2.0.0** | Oct 15, 2025 | ✅ Migrated to FastAPI<br/>✅ Added location validation<br/>✅ Improved error handling<br/>✅ RESTful API design | 🔵 Stable || GET | `/ui` | Web-based user interface |
+
+| **1.0.0** | Oct 10, 2025 | ✅ Initial release<br/>✅ Basic GPS extraction from EXIF | 🔵 Archived |
+
+
+
+### Version 3.0.0 Highlights
+
+## 🏗️ Architecture### Web Interface## 🧪 Example Response
+
+✨ **New Features:**
+
+- **OCR GPS Extraction:** Read GPS coordinates from screenshots and images with text overlays
+
+- **Multi-Method Extraction:** EXIF → OCR → Pattern Recognition fallback chain
+
+- **LPU Campus Validation:** Precise boundary validation for Lovely Professional University### System Overview
+
+- **Interactive API Docs:** Swagger UI and ReDoc interfaces
+
+- **Apple-Inspired UI:** Modern glassmorphism design
+
+- **Filename Independence:** Content-based extraction only
+
+```1. Open http://localhost:8000/ui in your browser```json
+
+🐛 **Bug Fixes:**
+
+- Fixed critical bug where fake GPS coordinates were returned for images without GPS data┌─────────────────────────────────────────────────────┐
+
+- Removed hardcoded fallback coordinates
+
+- Improved OCR text parsing with better regex patterns│                   Frontend (UI)                      │2. Drag & drop an image with GPS data{
+
+- Fixed logging configuration timing issues
+
+│  - Apple Liquid Design (Glassmorphism)              │
+
+🔧 **Improvements:**
+
+- Better error messages and user feedback│  - Drag & Drop Image Upload                         │3. Click "Validate Location"  "filename": "WhatsApp Image 2025-09-26.jpg",
+
+- Comprehensive logging for debugging
+
+- Optimized image preprocessing for OCR│  - Real-time Validation Display                     │
+
+- Enhanced coordinate validation
+
+- Production-ready deployment configuration└────────────────────┬────────────────────────────────┘4. View results with GPS coordinates and zone information  "extracted_gps": {
+
+
+
+---                     │
+
+
+
+## 🧪 Testing                     │ HTTP/REST API    "latitude": 31.2509,
+
+
+
+### Manual Testing                     │
+
+
+
+1. **Test with GPS-enabled image:**┌────────────────────▼────────────────────────────────┐### API Usage    "longitude": 75.7054,
+
+   ```bash
+
+   curl -X POST "http://localhost:8000/api/v1/validate-image-location" \│              FastAPI Backend                         │
+
+     -F "file=@image_with_gps.jpg"
+
+   ```│  ┌──────────────────────────────────────────────┐  │    "source": "whatsapp_pattern",
+
+
+
+2. **Test with screenshot containing GPS text:**│  │        GPS Extraction Layer                   │  │
+
+   - Take a WhatsApp location screenshot showing "Latitude" and "Longitude"
+
+   - Upload through web UI at <http://localhost:8000/ui>│  │  1. EXIF Reader (Camera Metadata)            │  │**Validate Image:**    "confidence": 0.85,
+
+
+
+3. **Test with non-GPS image:**│  │  2. OCR Engine (Tesseract - Text in Images)  │  │
+
+   - Upload a regular photo without GPS data
+
+   - Should return error: "No GPS coordinates found"│  │  3. Pattern Recognition (Fallback)           │  │```bash    "note": "Detected WhatsApp GPS overlay"
+
+
+
+### Health Check│  └──────────────────┬───────────────────────────┘  │
+
+
+
+```bash│                     │                                │curl -X POST "http://localhost:8000/api/v1/validate-image-location" \  },
+
+curl http://localhost:8000/api/v1/health
+
+```│  ┌──────────────────▼───────────────────────────┐  │
+
+
+
+Expected response:│  │      Location Validation Layer               │  │  -F "file=@your-image.jpg"  "validation": {
+
+
+
+```json│  │  - Polygon-based Geofencing                  │  │
+
+{
+
+  "status": "healthy",│  │  - LPU Campus Boundary Validation            │  │```    "status": "valid",
+
+  "ocr_available": true,
+
+  "zones_loaded": 1,│  │  - Zone Identification                       │  │
+
+  "tesseract_version": "5.5.0.20241111"
+
+}│  └──────────────────────────────────────────────┘  │    "zone_name": "Lovely Professional University - Main Campus",
+
+```
+
+└─────────────────────────────────────────────────────┘
+
+---
+
+```**Response:**    "zone_type": "educational_institution",
+
+## 🚢 Deployment
+
+
+
+### Production Deployment
+
+### Directory Structure```json    "department": "University Administration",
+
+1. **Set environment variables:**
+
+   ```bash
+
+   export ENVIRONMENT=production
+
+   export LOG_LEVEL=INFO```{    "confidence": 0.72
+
+   ```
+
+GPS-verification/
+
+2. **Run with Gunicorn:**
+
+   ```bash├── backend/                    # Backend application  "filename": "whatsapp_location.jpg",  }
+
+   gunicorn backend.main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
+
+   ```│   ├── main.py                # FastAPI application entry point
+
+
+
+### Docker Deployment│   ├── requirements.txt       # Python dependencies  "extracted_gps": {}
+
+
+
+```bash│   ├── data/                  # Configuration data
+
+docker-compose up -d
+
+```│   │   └── ward_boundaries.json  # LPU campus boundaries    "latitude": 31.256577,```
+
+
+
+Access at: <http://localhost:8000/ui>│   ├── routes/                # API endpoints
+
+
+
+### Security Considerations│   │   └── gps_api.py        # GPS validation routes    "longitude": 75.704117,
+
+
+
+- ✅ Configure CORS origins in production│   └── services/              # Business logic
+
+- ✅ Use HTTPS in production
+
+- ✅ Implement rate limiting│       ├── gps_extractor.py  # GPS extraction service    "source": "pattern_recognition",## 🔧 Configuration
+
+- ✅ Add authentication if needed
+
+- ✅ Sanitize file uploads│       └── location_validator.py  # Location validation
+
+- ✅ Set up proper logging
+
+├── frontend/                   # Frontend application    "confidence": 0.6
+
+---
+
+│   ├── index.html             # Main UI page
+
+## 🤝 Contributing
+
+│   ├── css/  },### Zone Boundaries
+
+Contributions are welcome! Please follow these guidelines:
+
+│   │   └── style.css          # Apple-inspired styling
+
+1. Fork the repository
+
+2. Create a feature branch: `git checkout -b feature/amazing-feature`│   └── js/  "validation": {Edit `backend/data/ward_boundaries.json` to add or modify administrative zones:
+
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+
+4. Push to the branch: `git push origin feature/amazing-feature`│       └── app.js             # Frontend logic
+
+5. Open a Pull Request
+
+├── docs/                       # Documentation    "status": "valid",
+
+---
+
+│   ├── API_DOCUMENTATION.md   # Complete API guide
+
+## 📝 License
+
+│   └── INSTALLATION.md        # Installation guide    "zone_name": "Lovely Professional University - Main Campus",```json
+
+This project is licensed under the MIT License.
+
+├── requirements.txt           # Root dependencies
+
+---
+
+├── docker-compose.yml         # Docker configuration    "confidence": 0.73{
+
+## 🙏 Acknowledgments
+
+└── README.md                  # This file
+
+- **Lovely Professional University** for campus boundary data
+
+- **Tesseract OCR** for text extraction capabilities```  }  "zones": [
+
+- **FastAPI** for the excellent web framework
+
+- **OpenCV** for image processing
+
+
+
+---## ⚙️ Configuration}    {
+
+
+
+## 📧 Contact
+
+
+
+**Project Maintainer:** Nitish Niraj### LPU Campus Boundaries```      "id": "zone_1",
+
+
+
+**GitHub:** [@nitish-niraj](https://github.com/nitish-niraj)
+
+
+
+**Repository:** [GPS-verification](https://github.com/nitish-niraj/GPS-verification)The system is pre-configured with **Lovely Professional University Main Campus** boundaries. The boundary data is stored in `backend/data/ward_boundaries.json`.      "name": "Zone Name",
+
+
+
+---
+
+
+
+## 🆘 Support**Zone Configuration:**### Python Example      "type": "zone_type",
+
+
+
+If you encounter any issues or have questions:- **Name:** LPU_Main
+
+
+
+1. Check the [API Documentation](http://localhost:8000/docs)- **Full Name:** Lovely Professional University - Main Campus      "boundary": [
+
+2. Review the [Installation Guide](docs/INSTALLATION.md)
+
+3. Open an issue on [GitHub](https://github.com/nitish-niraj/GPS-verification/issues)- **Location:** Jalandhar, Punjab, India
+
+
+
+---- **Contact:** +91-1824-517000```python        [longitude, latitude],
+
+
+
+## 🎓 Use Cases- **Email:** info@lpu.co.in
+
+
+
+- **Campus Security:** Validate student/staff locations within campus- **Type:** Educational Institutionimport requests        [longitude, latitude],
+
+- **Attendance Systems:** Verify location-based attendance
+
+- **Delivery Services:** Confirm delivery within campus boundaries
+
+- **Event Management:** Validate event participation locations
+
+- **Research:** Geographic data analysis and validation**To modify boundaries:**        ...
+
+
+
+---
+
+
+
+<div align="center">Edit `backend/data/ward_boundaries.json`:with open('image.jpg', 'rb') as f:      ]
+
+
+
+**Made with ❤️ for Lovely Professional University**```json
+
+
+
+*Last Updated: October 18, 2025 - Version 3.0.0*{    response = requests.post(    }
+
+
+
+</div>  "educational_zones": {
+
 
     "LPU_Main": {        'http://localhost:8000/api/v1/validate-image-location',  ]
 
