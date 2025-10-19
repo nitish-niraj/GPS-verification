@@ -35,7 +35,6 @@ RUN pip install --no-cache-dir --upgrade pip && \
 
 # Copy application code
 COPY backend/ /app/backend/
-COPY frontend/ /app/frontend/
 
 # Set working directory to backend
 WORKDIR /app/backend
