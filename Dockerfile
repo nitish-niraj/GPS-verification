@@ -6,7 +6,8 @@ FROM python:3.9-slim
 # Set environment variables
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
-    DEBIAN_FRONTEND=noninteractive
+    DEBIAN_FRONTEND=noninteractive \
+    TESSERACT_CMD=/usr/bin/tesseract
 
 # Install system dependencies including Tesseract OCR
 RUN apt-get update && apt-get install -y \

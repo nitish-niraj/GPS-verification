@@ -93,12 +93,17 @@ class GPSExtractor:
             import cv2
             import os
             
-            # Configure Tesseract path for Windows
+            # Configure Tesseract path
             tesseract_paths = [
+                os.getenv('TESSERACT_CMD'),  # Environment variable (Docker/HF)
+                '/usr/bin/tesseract',  # Linux default (Docker/HF)
                 r"D:\OCR-System\tesseract.exe",  # User's custom installation
-                r"C:\Program Files\Tesseract-OCR\tesseract.exe",
-                r"C:\Program Files (x86)\Tesseract-OCR\tesseract.exe",
+                r"C:\Program Files\Tesseract-OCR\tesseract.exe",  # Windows
+                r"C:\Program Files (x86)\Tesseract-OCR\tesseract.exe",  # Windows x86
             ]
+            
+            # Filter out None values
+            tesseract_paths = [p for p in tesseract_paths if p]
             
             for path in tesseract_paths:
                 if os.path.exists(path):
