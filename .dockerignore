@@ -1,0 +1,89 @@
+# Git files
+.git
+.gitignore
+.gitattributes
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# Testing
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# Documentation (keep only README_HF.md)
+*.md
+!README_HF.md
+docs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+.env.*
+
+# Temporary files
+*.tmp
+*.bak
+*.backup
+*.broken
+
+# Node modules (if any)
+node_modules/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Images (except necessary assets)
+*.jpg
+*.jpeg
+*.png
+*.gif
+!frontend/**/*.png
+!frontend/**/*.jpg
+
+# Docker
+docker-compose.yml
+Dockerfile.dev
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+
+# Other
+*.pem
+*.key
+*.cert

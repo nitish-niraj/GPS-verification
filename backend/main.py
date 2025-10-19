@@ -91,11 +91,17 @@ async def root():
 
 if __name__ == "__main__":
     # Run the application directly
-    logger.info("🌟 Starting GPS Verifier API server...")
+    import os
+    
+    # Use environment variable PORT or default to 7860 (Hugging Face Spaces)
+    # Falls back to 8000 for local development
+    port = int(os.getenv("PORT", os.getenv("SPACE_ID", "8000") and 7860 or 8000))
+    
+    logger.info(f"🌟 Starting GPS Verifier API server on port {port}...")
     uvicorn.run(
         "main:app",
         host="0.0.0.0",
-        port=8000,
-        reload=True,
+        port=port,
+        reload=False,  # Disable reload in production
         log_level="info"
     )
