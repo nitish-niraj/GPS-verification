@@ -3,7 +3,8 @@
 // ========================================
 
 // Configuration
-const API_BASE_URL = 'http://127.0.0.1:8000';
+// Use relative URL to work in any environment (localhost, Hugging Face, etc.)
+const API_BASE_URL = window.location.origin;
 const API_ENDPOINT = `${API_BASE_URL}/api/v1/validate-image-location`;
 
 // DOM Elements
@@ -156,8 +157,8 @@ async function validateImage() {
         console.error('Validation error:', error);
         showError(
             'Connection Error',
-            'Failed to connect to the validation server. Please ensure the backend is running.',
-            ['Make sure the API server is running on http://127.0.0.1:8000', 'Check your internet connection', 'Try again in a few moments']
+            'Failed to connect to the validation server. Please try again.',
+            ['Check your internet connection', 'Ensure the image contains GPS data', 'Try again in a few moments']
         );
     } finally {
         // Reset button state
