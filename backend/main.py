@@ -7,7 +7,7 @@ Clean and simple FastAPI application for GPS coordinate extraction and validatio
 import logging
 import uvicorn
 from pathlib import Path
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
@@ -66,26 +66,39 @@ if frontend_path.exists():
         return FileResponse(str(frontend_path / "index.html"))
 
 @app.get("/")
-async def root():
+async def root(request: Request):
     """Root endpoint with API information"""
+    # Get the base URL dynamically
+    base_url = str(request.base_url).rstrip('/')
+    
     return {
-        "name": "GPS Verifier API",
-        "version": "3.0.0",
-        "description": "GPS validation system for Lovely Professional University",
-        "ui": "http://localhost:8000/ui",
+        "message": "GPS Verifier API v3.0.0 - LPU Location Validation System",
+        "status": "running",
+        "description": "Extract GPS coordinates from images and validate against Lovely Professional University campus boundaries",
         "features": [
-            "GPS extraction from image EXIF data",
-            "OCR text extraction using Tesseract",
-            "WhatsApp GPS overlay detection",
-            "Location validation against administrative zones"
+            "📸 GPS extraction from image EXIF metadata",
+            "🔍 OCR text extraction using Tesseract",
+            "📱 WhatsApp GPS overlay detection",
+            "🗺️ Location validation against LPU campus zones",
+            "✨ Real-time coordinate verification"
         ],
+        "links": {
+            "web_ui": f"{base_url}/ui",
+            "api_docs": f"{base_url}/docs",
+            "redoc": f"{base_url}/redoc",
+            "health_check": f"{base_url}/api/v1/health"
+        },
         "endpoints": {
-            "web_ui": "GET /ui",
             "validate_image": "POST /api/v1/validate-image-location",
-            "validate_coords": "POST /api/v1/validate-coordinates", 
+            "validate_coordinates": "POST /api/v1/validate-coordinates",
             "list_zones": "GET /api/v1/zones",
-            "health_check": "GET /api/v1/health",
-            "documentation": "GET /docs"
+            "health_check": "GET /api/v1/health"
+        },
+        "tech_stack": {
+            "framework": "FastAPI",
+            "ocr": "Tesseract + OpenCV",
+            "geospatial": "Shapely",
+            "deployment": "Hugging Face Spaces (Docker)"
         }
     }
 
